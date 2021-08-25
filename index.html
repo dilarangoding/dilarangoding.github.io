@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penghilang Stress</title>
+  <style>
+    .center {
+      text-align: center;
+    }
+
+    .img {
+      margin: 0 auto 10px;
+      width: 600px;
+      height: 400px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      .img {
+        width: 300px;
+        height: 300px;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="center">
+    <h1>Penghilang Stress</h1>
+    <div class="img">
+
+    </div>
+    <button id="button">Click Me</button>
+  </div>
+
+</body>
+
+<script>
+
+
+  const button = document.querySelector("#button");
+
+  button.addEventListener('click', function () {
+    fetch('https://thatcopy.pw/catapi/rest/')
+      .finally(() => console.log('selesai'))
+      .then(response => response.json())
+      .then(response => {
+        const img = document.querySelector('.img');
+        img.innerHTML = `<img src="${response.url}" class="kucing">`;
+      });
+  })
+
+</script>
+
+</html>
