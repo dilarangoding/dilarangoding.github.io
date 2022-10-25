@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Penghilang Stress</title>
+  <title>Miaw API</title>
   <style>
     .center {
       text-align: center;
@@ -50,7 +50,7 @@
 <body>
 
   <div class="center">
-    <h1>Penghilang Stress</h1>
+    <h1>Miaw API</h1>
     <div class="img">
 
     </div>
@@ -65,12 +65,15 @@
   const button = document.querySelector("#button");
 
   button.addEventListener('click', function () {
-    fetch('https://thatcopy.pw/catapi/rest/')
-      .finally(() => console.log('selesai'))
+    fetch('https://api.thecatapi.com/v1/images/search')
       .then(response => response.json())
       .then(response => {
+
         const img = document.querySelector('.img');
-        img.innerHTML = `<img src="${response.url}" class="kucing">`;
+        response.forEach(e => {
+          img.innerHTML = `<img src="${e.url}" class="kucing">`;
+        });
+        
       });
   })
 
